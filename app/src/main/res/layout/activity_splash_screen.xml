@@ -39,7 +39,6 @@
         android:gravity="center"
         android:layout_marginTop="200dp"
         android:padding="15dp"
-        android:text="@string/designer_name"
         android:textColor="@color/colorAccent"
         android:textSize="15sp"
         android:textStyle="bold"

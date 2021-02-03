@@ -5,5 +5,8 @@
     <string name="profile">profile</string>
     <string name="food_for_you">Foodify</string>
     <string name="update">Update</string>
+    <string name="content_fragment">content</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vari">vari</string>
 
 </resources>

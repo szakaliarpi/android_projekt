@@ -1,5 +1,4 @@
 package com.example.android_projekt
-
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +9,11 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         val myThread: Thread = object : Thread() {
             override fun run() {
-                try {
-                    sleep(2500)
+                try { sleep(2500)
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
-                    finish()
-                } catch (e: InterruptedException) {
+                    finish() }
+                catch (e: InterruptedException) {
                     e.printStackTrace()
                 }
             }

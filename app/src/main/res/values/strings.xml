@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">android_projekt</string>
-    <string name="profile">profile</string>
     <string name="restaurants">restaurants</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash">splash</string>
+    <string name="profile">profile</string>
+    <string name="food_for_you">Foodify</string>
+    <string name="update">Update</string>
 
 </resources>

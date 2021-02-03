@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.w3c.dom.Text
 import android.content.Context
+import android.widget.Button
 import android.widget.TextView
 
 
@@ -23,7 +24,11 @@ class ProfileUpdateFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_profile_update, container, false)
 
-        val vari: TextView = view?.findViewById<TextView>(R.id.vari)
+        val insertButton: Button = view.findViewById<Button>(R.id.btn_insert)
+
+        insertButton.setOnClickListener {
+
+        }
 
         return view
     }

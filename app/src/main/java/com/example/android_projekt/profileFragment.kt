@@ -23,7 +23,7 @@ class ProfileFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
         val updateButton = view.findViewById<Button>(R.id.profile)
 
-        Log.d("onclick", "asd")
+        val profileResult = view.findViewById<TextView>(R.id.text_profile)
 
 
         updateButton?.setOnClickListener { view ->
@@ -34,6 +34,22 @@ class ProfileFragment : Fragment() {
             transaction?.disallowAddToBackStack()
             transaction?.commit()
         }
+
+        val db = context?.let { DataBaseHandler(context = it) }
+
+        //read the data to the profile screen
+        val data = db?.readData()
+        profileResult.text = ""
+        if (data != null) {
+            for (i in 0 until data.size) {
+                profileResult.append("\nName: " + data[i].name + "\n\nAdress: "
+                        + data[i].adress + "\n\nPhone Number:  " + data[i].phone_number + "\n\nEmail:  " + data[i].email + '\n')
+            }
+        }
+        if(profileResult.text == "") {
+            profileResult.append("Nincs bevitt adat. \n\n tolts fel adatot!")
+        }
+
         return view
 
     }

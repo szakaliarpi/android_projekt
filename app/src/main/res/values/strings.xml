@@ -4,15 +4,14 @@
     <string name="splash">splash</string>
     <string name="profile">profile</string>
     <string name="food_for_you">Foodify</string>
-    <string name="update">Update</string>
     <string name="content_fragment">content</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="insert">insert</string>
     <string name="manage">manage</string>
     <string name="name">Enter your name</string>
-    <string name="adress">Enter youradress</string>
+    <string name="address">Enter your address</string>
     <string name="phone_number">Enter your phone number</string>
-    <string name="email">Enter your email adress</string>
+    <string name="email">Enter your email address</string>
 
 
 

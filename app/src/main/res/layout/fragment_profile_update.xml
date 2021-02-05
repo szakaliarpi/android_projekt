@@ -4,62 +4,62 @@
     android:layout_height="match_parent"
     tools:context=".ProfileUpdateFragment"
     android:orientation="vertical">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/manage"
         android:textSize="30sp"
-        android:id="@+id/update_profile"/>
+        android:id="@+id/text_update_profile"/>
 
-
-    <LinearLayout
-        android:layout_height="wrap_content"
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical">
-        <EditText
-            android:layout_margin="10dp"
-            android:id="@+id/name_id"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:hint="@string/name"/>
-        <EditText
-            android:layout_margin="10dp"
-            android:id="@+id/adress_id"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:hint="@string/adress"/>
-        <EditText
-            android:layout_margin="10dp"
-            android:id="@+id/phone_number_id"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="phone"
-            android:hint="@string/phone_number"/>
-        <EditText
-            android:layout_margin="10dp"
-            android:id="@+id/email_id"
-            android:padding="10dp"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email"/>
-        <Button
-            android:id="@+id/btn_insert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/insert"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/name_id"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:hint="@string/name"/>
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/adress_id"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="text"
+                android:hint="@string/address"/>
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/phone_number_id"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="phone"
+                android:hint="@string/phone_number"/>
+            <EditText
+                android:layout_margin="10dp"
+                android:id="@+id/email_id"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"/>
 
-    </LinearLayout>
-
-
+            <Button
+                android:id="@+id/btn_insert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/insert"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -1,9 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment"
-    android:background="#8C8686">
+    tools:context=".ProfileUpdateFragment"
+    android:background="#8C8686"
+    android:orientation="vertical">
 
     <TextView
         android:textSize="30sp"
@@ -12,23 +13,48 @@
         android:layout_height="wrap_content"
         android:id="@+id/text_profile"/>
 
-    <TextView
-        android:id="@+id/text_results_profile"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:layout_marginTop="50dp"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_profile"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="344dp"
-        android:text="@string/update"
-        android:id="@+id/btn_update"
-        />
+            <ImageView
+                android:id="@+id/profile_picture"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:transformPivotX="30dp"
+                android:transformPivotY="30dp"
+                android:layout_centerHorizontal="true"/>
 
+            <TextView
+                android:id="@+id/text_results_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/profile_picture" />
 
-</RelativeLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_results_profile"
+                android:layout_marginTop="20dp"
+                android:text="Update your profile pic"
+                android:id="@+id/btn_update_profilepic"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_update_profilepic"
+                android:layout_centerHorizontal="true"
+                android:text="Update your data"
+                android:id="@+id/btn_update" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

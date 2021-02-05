@@ -9,10 +9,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.w3c.dom.Text
 import android.content.Context
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import android.content.Intent
+import android.content.Intent.ACTION_PICK
+import android.graphics.Bitmap
 
 
 class ProfileUpdateFragment : Fragment() {
@@ -30,42 +30,50 @@ class ProfileUpdateFragment : Fragment() {
         val insertButton: Button = view.findViewById<Button>(R.id.btn_insert)
 
         val nameText: EditText = view.findViewById<EditText>(R.id.name_id)
-        val adressText: EditText = view.findViewById<EditText>(R.id.adress_id)
+        val addressText: EditText = view.findViewById<EditText>(R.id.adress_id)
         val emailText: EditText = view.findViewById<EditText>(R.id.email_id)
         val phoneNumberText: EditText = view.findViewById<EditText>(R.id.phone_number_id)
+
 
         var db = context?.let { DataBaseHandler(context = it) }
 
             fun insert() {
+
+                var data = db?.readData()
+                var imgUri = ""
+                if (data != null) {
+                    for (i in 0..(data.size - 1)) {
+                        imgUri = data.get(i).img
+                    }
+                }
+
                 if (nameText.text.toString().length > 0 &&
-                    adressText.text.toString().length > 0 &&
+                    addressText.text.toString().length > 0 &&
                     phoneNumberText.text.toString().length > 0 &&
                     emailText.text.toString().length > 0) run {
                     var profile = Profile(
                         nameText.text.toString(),
-                        adressText.text.toString(),
+                        addressText.text.toString(),
                         phoneNumberText.text.toString().toInt(),
-                        emailText.text.toString()
+                        emailText.text.toString(),
+                        imgUri
                     )
 
-                    db?.insertData(profile)
-                    db?.insertData(profile)
-                }
-                }
-
-
-            insertButton.setOnClickListener {
-                if (id > 1) {
                     db!!.deleteData()
-                    insert()
-                } else {
-                    insert()
+
+                    db?.insertData(profile)
+                    db?.insertData(profile)
                 }
+                }
+
+        insertButton.setOnClickListener({
+            if(id>1){
+                //db!!.deleteData()
             }
-
+            insert()
+        })
         return view
-        }
-
+    }
 }
 
 

@@ -21,7 +21,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
-        val updateButton = view.findViewById<Button>(R.id.profile)
+        val updateButton = view.findViewById<Button>(R.id.btn_profile)
 
         val profileResult = view.findViewById<TextView>(R.id.text_profile)
 

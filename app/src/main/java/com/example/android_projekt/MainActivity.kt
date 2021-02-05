@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
 //    private lateinit var bottomNavigationView: BottomNavigationView
 
     lateinit var profileFragment: ProfileFragment
+    lateinit var restaurantsFragment: RestaurantsFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigation.setOnNavigationItemReselectedListener { item ->
             when(item.itemId){
-                R.id.profile -> {
+                R.id.btn_profile -> {
                     profileFragment = ProfileFragment()
                     supportFragmentManager
                         .beginTransaction()
@@ -33,6 +35,16 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.frame_layout, profileFragment)
                         .commit()
                 }
+
+                R.id.btn_restaurants -> {
+                    restaurantsFragment = RestaurantsFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .replace(R.id.frame_layout, restaurantsFragment)
+                        .commit()
+                }
+
             }
             true
         }

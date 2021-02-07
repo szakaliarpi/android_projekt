@@ -60,11 +60,11 @@ class ProfileFragment : Fragment() {
             profileResult.append("Nincs bevitt adat. \n\n tolts fel adatot!")
         }
 
-        imgButton.setOnClickListener({
+        imgButton.setOnClickListener(){
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent,456)
-        })
+        }
 
         return view
 

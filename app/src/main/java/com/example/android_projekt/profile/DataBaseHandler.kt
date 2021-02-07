@@ -53,14 +53,14 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(context, DATABASE
     }
 
     fun readData() : MutableList<Profile>{
-        val list : MutableList<Profile> = ArrayList()
+        var list : MutableList<Profile> = ArrayList()
 
         val db = this.readableDatabase
         val query = "SELECT * FROM $TABLE_NAME"
         val result = db.rawQuery(query,null)
         if(result.moveToFirst()){
             do {
-                val profile = Profile()
+                var profile = Profile()
                 profile.id = result.getString(result.getColumnIndex(COL_ID)).toInt()
                 profile.name = result.getString(result.getColumnIndex(COL_NAME))
                 profile.address = result.getString(result.getColumnIndex(COL_ADRESS))

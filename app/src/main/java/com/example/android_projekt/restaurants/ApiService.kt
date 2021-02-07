@@ -13,7 +13,9 @@ import retrofit2.http.Query
 import com.example.android_projekt.model.Reqres
 
 //private const val BASE_URL = "https://opentable.herokuapp.com/"
-private const val BASE_URL = "https://ratpark-api.imok.space/"
+//private const val BASE_URL = "https://ratpark-api.imok.space/"
+private const val BASE_URL = "http://86.120.35.107:1680/"
+
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -29,6 +31,8 @@ interface ApiService{
     @GET("restaurants")
     fun getProperties():
             Deferred<Reqres>
+    fun getRestaurants(@Query("country")state: String, @Query("per_page")per_page: Int, @Query("page")current_page: Int): Call<List<Restaurants>>
+
 }
 
 

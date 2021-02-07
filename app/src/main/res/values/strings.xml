@@ -12,7 +12,8 @@
     <string name="address">Enter your address</string>
     <string name="phone_number">Enter your phone number</string>
     <string name="email">Enter your email address</string>
-
+    <string name="next">asd</string>
+    <string name="back">av</string>
 
 
 </resources>

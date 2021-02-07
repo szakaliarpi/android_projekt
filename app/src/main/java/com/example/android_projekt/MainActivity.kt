@@ -11,10 +11,8 @@ import com.example.android_projekt.restaurants.RestaurantsFragment
 
 
 class MainActivity : AppCompatActivity() {
-//    private lateinit var bottomNavigationView: BottomNavigationView
 
     lateinit var profileFragment: ProfileFragment
-    lateinit var restaurantsFragment: RestaurantsFragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +33,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.btn_restaurants -> {
-                    restaurantsFragment = RestaurantsFragment()
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                     startActivity(intent)
@@ -44,22 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-        /*bottomNavigationView = findViewById(R.id.bottomNav)
-        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod)
-        supportFragmentManager.beginTransaction().replace(R.id.container, profileFragment())
-
-    }
-
-    private val bottomNavMethod =
-        BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-            var fragment: Fragment? = null
-            when (menuItem.itemId) {
-                R.id.restaurants -> fragment = restaurantFragment()
-                R.id.profile -> fragment = profileFragment()
-            }
-            supportFragmentManager.beginTransaction().replace(R.id.container, fragment!!).commit()
-            true
-        }*/
+   
     }
 }
 

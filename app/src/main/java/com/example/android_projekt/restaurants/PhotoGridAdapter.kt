@@ -1,7 +1,6 @@
 package com.example.android_projekt.restaurants
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +9,7 @@ import com.example.android_projekt.databinding.CustomListBinding
 import com.example.android_projekt.model.Restaurants
 
 
-class PhotoGridAdapter(private val onClickListener: View.OnClickListener):
+class PhotoGridAdapter(private val onClickListener: OnClickListener):
     ListAdapter<Restaurants, PhotoGridAdapter.RestaurantsViewHolder>(DiffCallback) {
 
     class RestaurantsViewHolder(private var binding: CustomListBinding):

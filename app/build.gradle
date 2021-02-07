@@ -9,6 +9,8 @@ android {
     compileSdkVersion 30
     buildFeatures {
         dataBinding true
+        viewBinding true
+
     }
     dataBinding { enabled = true }
     defaultConfig {

@@ -31,7 +31,7 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/mars_image"
             android:text="@{property.name}"
-            android:textColor="#de000000"
+            android:textColor="#@color/black"
             android:textSize="27sp"
             android:textStyle="bold"
             tools:text="Name" />

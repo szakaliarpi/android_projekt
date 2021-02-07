@@ -10,6 +10,7 @@ android {
     buildFeatures {
         dataBinding true
     }
+    dataBinding { enabled = true }
     defaultConfig {
         applicationId "rol.myappcompany.android_project"
         minSdkVersion 19

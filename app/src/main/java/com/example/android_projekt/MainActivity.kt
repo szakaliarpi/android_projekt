@@ -3,6 +3,7 @@
 package com.example.android_projekt
 
 import android.os.Bundle
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,11 +36,9 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.btn_restaurants -> {
                     restaurantsFragment = RestaurantsFragment()
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                        .replace(R.id.frame_layout, restaurantsFragment)
-                        .commit()
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intent)
                 }
 
             }

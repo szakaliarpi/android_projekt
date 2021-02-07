@@ -1,18 +1,13 @@
-package com.example.android_projekt
+package com.example.android_projekt.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.w3c.dom.Text
-import android.content.Context
-import android.util.Log
 import android.widget.*
-import android.content.Intent
-import android.content.Intent.ACTION_PICK
-import android.graphics.Bitmap
+import com.example.android_projekt.R
+import com.example.android_projekt.profile.DataBaseHandler
 
 
 class ProfileUpdateFragment : Fragment() {

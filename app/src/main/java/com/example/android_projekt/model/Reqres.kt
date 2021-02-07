@@ -1,4 +1,4 @@
-package com.example.android_projekt
+package com.example.android_projekt.model
 
 data class Reqres(
     val current_page: Int,

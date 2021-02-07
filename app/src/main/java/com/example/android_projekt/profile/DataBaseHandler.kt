@@ -1,10 +1,12 @@
-package com.example.android_projekt
+package com.example.android_projekt.profile
+
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import com.example.android_projekt.profile.Profile
 
 val DATABASE_NAME = "ProfileDB"
 val TABLE_NAME = "Profiles"

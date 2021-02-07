@@ -2,20 +2,11 @@
 
 package com.example.android_projekt
 
-import android.os.Build
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.io.File
-import java.io.FileOutputStream
-import android.os.Environment
-import com.example.android_projekt.ProfileFragment
-import android.content.Intent
-import android.graphics.Bitmap
-import android.net.Uri
+import com.example.android_projekt.restaurants.RestaurantsFragment
 
 
 class MainActivity : AppCompatActivity() {

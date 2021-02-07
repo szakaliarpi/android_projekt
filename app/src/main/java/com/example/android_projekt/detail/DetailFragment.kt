@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.android_projekt.detail
 
 
@@ -16,27 +18,31 @@ import android.widget.ImageButton
 import com.example.android_projekt.model.Restaurants
 import android.annotation.SuppressLint
 import android.os.Build
+import android.support.v4.media.session.MediaSessionCompat.Token.fromBundle
 import android.widget.Toast
+import androidx.core.app.Person.fromBundle
 import androidx.fragment.app.FragmentTransaction
+import androidx.media.AudioAttributesCompat.fromBundle
+import com.example.android_projekt.DetailFragmentArgs
+import com.example.android_projekt.favourites.FDataBaseHandler
+import com.example.android_projekt.favourites.Favourites
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 
 
 class DetailFragment : Fragment() {
     @SuppressLint("SetTextI18n")
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         @Suppress("UNUSED_PARAMETER")
         val application = requireNotNull(activity).application
         val binding = FragmentDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        val rest = DetailFragmentArgs.fromBundle(arguments!!).selectedProperty
+        val rest = DetailFragmentArgs .fromBundle(arguments!!).selectedProperty
         val viewModelFactory = DetailViewModelFactory(rest, application)
         binding.viewModel = ViewModelProvider(
-            this, viewModelFactory
-        ).get(DetailViewModel::class.java)
+            this, viewModelFactory).get(DetailViewModel::class.java)
 
         fun makePhoneCall(number: String): Boolean {
             val intent = Intent(Intent.ACTION_DIAL)
@@ -82,9 +88,11 @@ class DetailFragment : Fragment() {
         binding.btnFavorites.setOnClickListener() {
             if (binding.btnFavorites.text == "Add to Favorites") {
 
-                val newFavorite = Favorites(
+                val newFavorite = Favourites(
                     rest.id,
-                    rest.name
+                    rest.name,
+                    rest.ImgSrcUrl
+
                 )
 
                 db?.insertDataFavorites(newFavorite)

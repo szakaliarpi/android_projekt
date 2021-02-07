@@ -39,6 +39,25 @@
                 android:layout_marginTop="20dp"
                 android:layout_below="@+id/profile_picture" />
 
+
+            <TextView
+                android:id="@+id/text_list_favorites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="List of favorites: "
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/text_results_profile"
+                />
+
+            <TextView
+                android:id="@+id/text_results_favorites"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_below="@+id/text_list_favorites"
+                />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

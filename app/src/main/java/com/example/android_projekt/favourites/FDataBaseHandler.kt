@@ -5,12 +5,15 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import com.example.android_projekt.profile.COL_IMG
 
 val DATABASE_NAME = "FavouritesDataBase"
 val TABLE_NAME = "Favourites"
 val COL_FID = "fid"
 val COL_ID = "id"
 val COL_NAME = "name"
+val COL_IMAGE = "ImgSrcUrl"
+
 
 class FDataBaseHandler(val context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1){ //NULL VALUE IS THE CURSOR FACTORY
 
@@ -18,27 +21,23 @@ class FDataBaseHandler(val context: Context) : SQLiteOpenHelper(context, DATABAS
         val createTable = "CREATE TABLE " + TABLE_NAME +" (" +
                 COL_FID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_ID +" INTEGER ," +
-                COL_NAME + " TEXT)"
+                COL_NAME + " TEXT," +
+                COL_IMAGE + " TEXT)"
 
         db?.execSQL(createTable)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     fun insertDataFavorites(favourites: Favourites){
         val db = this.writableDatabase
         val cv = ContentValues()
         cv.put(COL_ID, favourites.id)
-        cv.put(COL_NAME, favourites.name)
 
 
-        val  result =  db?.insert(TABLE_NAME, null, cv) //insert to the DB
-        /*if(result == (-1).toLong())
-            //Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()
-        else
-            //Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()*/
+        val  result =  db?.insert(TABLE_NAME, null, cv)
+
     }
 
     fun readDataFavorites() : MutableList<Favourites>{

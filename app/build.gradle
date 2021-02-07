@@ -14,7 +14,7 @@ android {
     }
     dataBinding { enabled = true }
     defaultConfig {
-        applicationId "rol.myappcompany.android_project"
+        applicationId "com.example.android_projekt"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

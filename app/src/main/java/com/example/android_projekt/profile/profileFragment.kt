@@ -14,6 +14,7 @@ import com.example.android_projekt.profile.DataBaseHandler
 import com.example.android_projekt.profile.Profile
 import com.example.android_projekt.profile.ProfileUpdateFragment
 import com.example.android_projekt.R
+import com.example.android_projekt.favourites.FDataBaseHandler
 
 
 class ProfileFragment : Fragment() {
@@ -28,7 +29,24 @@ class ProfileFragment : Fragment() {
         val updateButton = view.findViewById<Button>(R.id.btn_profile)
 
         val profileResult = view.findViewById<TextView>(R.id.text_profile)
-        val imgButton: Button = view.findViewById<Button>(R.id.btn_update_profilepic)
+
+        val imgButton = view.findViewById<Button>(R.id.btn_update_profilepic)
+
+        val favoriteResults = view.findViewById<TextView>(R.id.text_results_favorites)
+
+        val fdb = context?.let { FDataBaseHandler(context = it) }
+        val fdata = fdb?.readDataFavorites()
+        favoriteResults.text = ""
+
+        if(fdata != null){
+            for(i in 0..(fdata.size-1)){
+                favoriteResults.append("\n" + fdata.get(i).name)
+            }
+        }
+
+        if (favoriteResults.text == "") {
+            favoriteResults.append("You don't have any item on your favorite list yet!")
+        }
 
         updateButton?.setOnClickListener { view ->
 
@@ -49,8 +67,9 @@ class ProfileFragment : Fragment() {
 
         if (data != null) {
             for (i in 0 until data.size - 1) {
-                profileResult.append("\nName: " + data[i].name + "\n\nAdress: "
-                        + data[i].address + "\n\nPhone Number:  " + data[i].phone_number + "\n\nEmail:  " + data[i].email + '\n')
+
+                profileResult.append("\nName: " + data.get(i).name + "\nAdress: "
+                        + data.get(i).address + "\nPhone Number:  " + data.get(i).phone_number + "\nEmail:  " + data.get(i).email + '\n')
 
                 var imgUri = Uri.parse(data[i].img)
                 profilePicture!!.setImageURI(imgUri)
@@ -86,11 +105,11 @@ class ProfileFragment : Fragment() {
             }
             if (data != null) {
                 for (i in 0..(data.size-1)) {
-                    var name = data.get(i).name
-                    var adress = data.get(i).address
-                    var phone_number = data.get(i).phone_number
-                    var email = data.get(i).email
-                    var profile = Profile(name, adress, phone_number, email, dataPic)
+                    val name = data.get(i).name
+                    val adress = data.get(i).address
+                    val phone_number = data.get(i).phone_number
+                    val email = data.get(i).email
+                    val profile = Profile(name, adress, phone_number, email, dataPic)
 
                     db?.insertData(profile)
                 }

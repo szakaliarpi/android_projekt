@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="viewModel"
+            name="property"
             type="com.example.android_projekt.model.Restaurants" />
     </data>
 
@@ -21,7 +21,8 @@
         android:adjustViewBounds="true"
         android:padding="2dp"
         app:imageUrl="@{property.imgSrcUrl}"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic"
+        android:layout_width="match_parent" />
 
         <TextView
             android:id="@+id/custom_list_item_text_view_name"
@@ -31,7 +32,6 @@
             android:layout_marginTop="2dp"
             android:layout_toEndOf="@id/mars_image"
             android:text="@{property.name}"
-            android:textColor="#@color/black"
             android:textSize="27sp"
             android:textStyle="bold"
             tools:text="Name" />

@@ -4,7 +4,7 @@
     <item
         android:id="@+id/btn_restaurants"
         android:title="@string/restaurants"
-        android:icon="@drawable/restaurant"
+        android:icon="@drawable/restaurants"
     />
 
     <item

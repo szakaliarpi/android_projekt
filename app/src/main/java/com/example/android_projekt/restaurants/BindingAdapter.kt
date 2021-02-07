@@ -45,3 +45,8 @@ fun bindStatus(statusImageView: ImageView, status: ApiStatus?) {
 
 }
 
+@BindingAdapter("listData")
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<Restaurants>?) {
+    val adapter = recyclerView.adapter as PhotoGridAdapter
+    adapter.submitList(data)
+}

@@ -22,12 +22,12 @@ class ProfileUpdateFragment : Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_profile_update, container, false)
 
-        val insertButton: Button = view.findViewById<Button>(R.id.btn_insert)
+        val insertButton = view.findViewById<Button>(R.id.btn_insert)
 
-        val nameText: EditText = view.findViewById<EditText>(R.id.name_id)
-        val addressText: EditText = view.findViewById<EditText>(R.id.adress_id)
-        val emailText: EditText = view.findViewById<EditText>(R.id.email_id)
-        val phoneNumberText: EditText = view.findViewById<EditText>(R.id.phone_number_id)
+        val nameText = view.findViewById<EditText>(R.id.name_id)
+        val addressText = view.findViewById<EditText>(R.id.adress_id)
+        val emailText = view.findViewById<EditText>(R.id.email_id)
+        val phoneNumberText = view.findViewById<EditText>(R.id.phone_number_id)
 
 
         var db = context?.let { DataBaseHandler(context = it) }

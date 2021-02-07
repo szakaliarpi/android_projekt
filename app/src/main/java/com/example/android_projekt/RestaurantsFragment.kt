@@ -11,19 +11,30 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import java.lang.reflect.Array.newInstance
+import androidx.lifecycle.ViewModelProvider
 
-class RestaurantsFragment : Fragment() {
+class   RestaurantsFragment : Fragment() {
 
+    private val viewModel: RestaurantsViewModel by lazy{
+        ViewModelProvider(this).get(RestaurantsViewModel::class.java)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        //val view : View = inflater.inflate(R.layout.fragment_restaurants, container, false)
+        val binding = FragmentRestaurantsBinding.inflate(inflater)
 
-        val view : View = inflater.inflate(R.layout.fragment_restaurants, container, false)
+        binding.lifecycleOwner = this
 
-        return view
+        binding.viewModel = viewModel
+
+        setHasOptionsMenu(true)
+        return binding.root
+        //return view
     }
 
 }
+
 

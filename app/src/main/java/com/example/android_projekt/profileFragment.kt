@@ -45,7 +45,7 @@ class ProfileFragment : Fragment() {
         val data = db?.readData()
         profileResult.text = ""
 
-        val profilePicture = view!!.findViewById<ImageView>(R.id.profile_picture)
+        val profilePicture = requireView().findViewById<ImageView>(R.id.profile_picture)
 
         if (data != null) {
             for (i in 0 until data.size - 1) {

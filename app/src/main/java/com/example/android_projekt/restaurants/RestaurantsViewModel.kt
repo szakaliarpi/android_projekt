@@ -7,6 +7,10 @@ import com.example.android_projekt.RestaurantsApi
 import retrofit2.Call
 import retrofit2.Response
 import com.example.android_projekt.model.Restaurants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class RestaurantsViewModel: ViewModel() {
     private val _response = MutableLiveData<String>()
@@ -14,24 +18,27 @@ class RestaurantsViewModel: ViewModel() {
     val response: LiveData<String>
         get() = _response
 
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
+
     init{
         getRealEstateProperties()
     }
 
     private fun getRealEstateProperties() {
-        RestaurantsApi.retrofitService.getProperties().enqueue(object: retrofit2.Callback<List<Restaurants>>{
-            override fun onFailure(call: Call<List<Restaurants>>, t: Throwable) {
-                _response.value = "Failure: " +  t.message
+        coroutineScope.launch {
+            var getPropertiesDeferred = RestaurantsApi.retrofitService.getProperties()
+            try {
+                var listResult = getPropertiesDeferred.await()
+                _response.value = "Success: ${listResult.restaurants.size} Mars properties retrieved"
+            } catch (e: Exception) {
+                _response.value = "Failure: ${e.message}"
             }
-            override fun onResponse(
-                call: Call<List<Restaurants>>,
-                response: Response<List<Restaurants>>
-            ) {
-                _response.value = "Success:  + ${response.body()?.size} properties retriever"
-            }
+        }
+    }
 
-        })
-
-        _response.value = "API Response: "
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

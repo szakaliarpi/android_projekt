@@ -52,7 +52,7 @@ class ProfileFragment : Fragment() {
                 profileResult.append("\nName: " + data[i].name + "\n\nAdress: "
                         + data[i].address + "\n\nPhone Number:  " + data[i].phone_number + "\n\nEmail:  " + data[i].email + '\n')
 
-                var imgUri = Uri.parse(data.get(i).img)
+                var imgUri = Uri.parse(data[i].img)
                 profilePicture!!.setImageURI(imgUri)
             }
         }

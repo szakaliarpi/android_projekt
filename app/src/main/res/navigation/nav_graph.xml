@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/overviewFragment">
+    app:startDestination="@id/restaurantsFragment">
 
     <fragment
-        android:id="@+id/overviewFragment"
-        tools:context=".restaurants.RestaurantsFragment"
-        android:label="fragment_overview"
+        android:id="@+id/restaurantsFragment"
+        android:name="com.example.android_projekt.restaurants.RestaurantsFragment"
+        android:label="fragment_restaurants"
         tools:layout="@layout/fragment_restaurants" >
         <action
             android:id="@+id/action_showDetail"
@@ -18,9 +18,14 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        tools:context=".DetailFrament"
+        tools:context=".DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="selectedProperty"
+            app:argType="com.example.android_projekt.model.Restaurants"/>
+
 
     </fragment>
 

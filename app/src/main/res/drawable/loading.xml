@@ -3,4 +3,10 @@
 <animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
     android:drawable="@drawable/loading_gif"
     android:pivotX="50%"
-    android:pivotY="50%" />
+    android:layout_width="20dp"
+    android:layout_height="20dp"
+    android:adjustViewBounds="true"
+    android:maxHeight="80dp"
+    android:minHeight="80dp"
+    android:maxWidth="80dp"
+    android:minWidth="80dp"/>

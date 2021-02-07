@@ -9,7 +9,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         val myThread: Thread = object : Thread() {
             override fun run() {
-                try { sleep(2500)
+                try { sleep(1500)
                     val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
                     finish() }

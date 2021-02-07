@@ -4,25 +4,29 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android_projekt.RestaurantsApi
-import retrofit2.Call
-import retrofit2.Response
 import com.example.android_projekt.model.Restaurants
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class RestaurantsViewModel: ViewModel() {
-    private val _status = MutableLiveData<String>()
+enum class ApiStatus{LOADING, ERROR, DONE}
 
-    val response: LiveData<String>
+class RestaurantsViewModel: ViewModel() {
+    private val _status = MutableLiveData<ApiStatus>()
+
+    val status: LiveData<ApiStatus>
         get() = _status
 
-    private val _property = MutableLiveData<Restaurants>()
+    private val _properties = MutableLiveData<List<Restaurants>>()
 
-    val property: LiveData<Restaurants>
+    val properties: LiveData<List<Restaurants>>
+    get() = _properties
 
-        get() = _property
+    private val _navigateToSelectedProperty = MutableLiveData<Restaurants>()
+
+    val navigateToSelectedProperty: LiveData<Restaurants>
+        get() = _navigateToSelectedProperty
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
@@ -35,12 +39,14 @@ class RestaurantsViewModel: ViewModel() {
         coroutineScope.launch {
             var getPropertiesDeferred = RestaurantsApi.retrofitService.getProperties()
             try {
-                var listResult = getPropertiesDeferred.await()
-                if (listResult.restaurants.size > 0) {
-                    _property.value = listResult.restaurants[0]
-                }
+                _status.value = ApiStatus.LOADING
+
+                val listResult =  getPropertiesDeferred.await()
+                _status.value = ApiStatus.DONE
+                _properties.value = listResult.restaurants
             } catch (e: Exception) {
-                _status.value = "Failure: ${e.message}"
+                _status.value = ApiStatus.ERROR
+                _properties.value = ArrayList()
             }
         }
     }
@@ -48,5 +54,13 @@ class RestaurantsViewModel: ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun displayPropertyDetails(rest: Restaurants) {
+        _navigateToSelectedProperty.value = rest
+    }
+
+    fun displayPropertyDetailsComplete() {
+        _navigateToSelectedProperty.value = null
     }
 }
